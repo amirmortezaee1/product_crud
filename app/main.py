@@ -14,4 +14,3 @@ instance = Product("pizza",
                    True,
                    )
 print(repr(instance))
-
