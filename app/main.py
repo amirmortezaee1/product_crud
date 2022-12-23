@@ -14,3 +14,9 @@ instance = Product("pizza",
                    True,
                    )
 print(repr(instance))
+
+# it will give us true value
+print(isinstance(instance, Product))
+
+# it give us class type result
+print(type(Product))

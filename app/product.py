@@ -1,4 +1,5 @@
 class Product:
+    _product: []
     def __init__(self,
                  title,
                  short_description: "",
@@ -32,3 +33,31 @@ class Product:
         short_description is {self.short_description}\n\
         description is {self.description} and sale price is {self.sale_price}"
         return product_detail
+
+    def add_product(self):
+        self._product.append(self)
+        return self.__repr__()
+
+    def read_product(self):
+        for i in self._product:
+            print(i)
+
+    def update_product(self, values:[]):
+        if len(values) != 12:
+            print("the input values are less or more than 12")
+        else:
+            if len(self._product == 0):
+                print("the product is empty so the value will added")
+            self._product.clear()
+            for i in values:
+                self._product.append(i)
+            print("Updated!")
+            return(self.__repr__())
+
+    def delete_product(self):
+        if self._product == []:
+            print('nothing is hear')
+        else:
+            print(self._product.clear())
+
+
