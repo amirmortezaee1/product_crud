@@ -1,5 +1,7 @@
 class Product:
-    _product: []
+    # use a list for storing product values 
+    _product = []
+
     def __init__(self,
                  title,
                  short_description: "",
@@ -14,12 +16,13 @@ class Product:
                  is_available: True,
                  is_visible: True,
                  ):
+        self.id = id
         self.title = title
         self.short_description = short_description
         self.description = description
         self.slug = slug
         self.permalink = permalink
-        self.isAvailable = is_available
+        self.is_available = is_available
         self.price = price
         self.regular_price = regular_price
         self.sale_price = sale_price
@@ -28,36 +31,43 @@ class Product:
         self.is_visible = is_visible
 
     def __repr__(self):
-        product_detail = f"\
-        title is {self.title}\n\
-        short_description is {self.short_description}\n\
-        description is {self.description} and sale price is {self.sale_price}"
-        return product_detail
+        return f'Inforamation of Product:({self.id},{self.title},{self.short_description},{self.description},{self.slug}' \
+        f'{self.permalink},{self.is_available},{self.price},{self.regular_price},{self.sale_price}' \
+        f'{self.manage_stoke},{self.stoke_quantity},{self.is_visible})'
 
+    # add value to _product
     def add_product(self):
         self._product.append(self)
         return self.__repr__()
 
+    # type values of _product
     def read_product(self):
         for i in self._product:
             print(i)
 
-    def update_product(self, values:[]):
+    # update_product give list of values and replace them with older value product
+    def update_product(self, values: []):
+        # check the input value size
         if len(values) != 12:
             print("the input values are less or more than 12")
         else:
-            if len(self._product == 0):
-                print("the product is empty so the value will added")
+            # check the _product list not empty
+            if len(self._product) == 0:
+                print("the product storage is empty so the value will added")
+            # clear the _product
             self._product.clear()
+            # update the _product with input values
             for i in values:
                 self._product.append(i)
             print("Updated!")
-            return(self.__repr__())
+            # return input values
+            return self.__repr__()
 
+    # delete the _product information
     def delete_product(self):
+        # check _product is empty or not
         if self._product == []:
             print('nothing is hear')
+        # clear the __product
         else:
             print(self._product.clear())
-
-
